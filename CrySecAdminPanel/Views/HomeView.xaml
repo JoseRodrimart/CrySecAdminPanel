@@ -1,0 +1,63 @@
+﻿<Page x:Class="CrySecAdminPanel.Views.HomeView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+      xmlns:local="clr-namespace:CrySecAdminPanel.Views"
+      mc:Ignorable="d" 
+      
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:uc="clr-namespace:CrySecAdminPanel.Views.UserControls"
+      d:DesignHeight="450" d:DesignWidth="800"
+      VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+      Title="HomeView"
+      
+      >
+
+    <Grid VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel Grid.Row="0" HorizontalAlignment="Center" Width="192">
+            <materialDesign:PackIcon Margin="17 0" VerticalAlignment="Center" Width="25" Height="25" Kind="Home"/>
+            <TextBlock FontSize="35" Grid.Row="0" Text="Home"></TextBlock>
+        </WrapPanel>
+
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Margin="30 0" Orientation="Vertical">
+
+                <uc:Title Text="Global Information"></uc:Title>
+
+             
+
+                <WrapPanel   Width="Auto" HorizontalAlignment="Center">
+                    <materialDesign:Card Width="200px" Height="130px" Margin="15px">
+
+                    </materialDesign:Card>
+
+                    <materialDesign:Card Width="200px" Height="130px" Margin="15px">
+                    </materialDesign:Card>
+
+                    <materialDesign:Card Width="200px" Height="130px" Margin="15px">
+                    </materialDesign:Card>
+                </WrapPanel>
+
+                <uc:Title Text="Daily usage statistics"></uc:Title>
+
+                <materialDesign:Card Width="Auto" Height="300px" Margin="25px">
+                    <lvc:CartesianChart 
+                            x:Name="Chart"
+                            Foreground="Red"/>
+                </materialDesign:Card>
+            </StackPanel>
+        </ScrollViewer>
+
+
+
+        <StackPanel Grid.Row="2"/>
+
+    </Grid>
+</Page>

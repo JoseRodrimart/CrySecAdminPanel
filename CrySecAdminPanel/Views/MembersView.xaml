@@ -1,0 +1,42 @@
+﻿<Page x:Class="CrySecAdminPanel.Views.MembersView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CrySecAdminPanel.Views"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:uc="clr-namespace:CrySecAdminPanel.Views.UserControls"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MembersView"
+      >
+
+    <Grid VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel Grid.Row="0" HorizontalAlignment="Center">
+            <materialDesign:PackIcon Margin="17 0" VerticalAlignment="Center" Width="25" Height="25" Kind="Home"/>
+            <TextBlock FontSize="35" Grid.Row="0" Text="Members"></TextBlock>
+        </WrapPanel>
+
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Margin="30 0" Orientation="Vertical">
+
+                <uc:Title Text="Members list"></uc:Title>
+
+                <uc:MemberCard></uc:MemberCard>
+                <uc:MemberCard></uc:MemberCard>
+                <uc:MemberCard></uc:MemberCard>
+
+            </StackPanel>
+        </ScrollViewer>
+
+
+
+        <StackPanel Grid.Row="2"/>
+
+    </Grid>
+</Page>

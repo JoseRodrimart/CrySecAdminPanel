@@ -1,0 +1,215 @@
+﻿<Window x:Name="MainWIndow" x:Class="CrySecAdminPanel.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CrySecAdminPanel"
+        mc:Ignorable="d"
+ 
+        xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="{materialDesign:MaterialDesignFont}"
+        
+        Title="MainWindow" Height="768" Width="1024" MinWidth="1000" MinHeight="618"
+        
+        WindowStartupLocation="CenterOwner"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        BorderThickness="0"
+        Padding="0"
+        Margin="0"
+        >
+
+
+    <Window.Resources>
+        <Storyboard x:Key="OpenMenu" Timeline.DesiredFrameRate="60">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="300"/>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="ellipseImgCompany">
+                <EasingDoubleKeyFrame KeyTime="0" Value="40"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="150"/>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="ellipseImgCompany">
+                <EasingDoubleKeyFrame KeyTime="0" Value="40"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="150"/>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="lblCompanyName">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="40"/>
+            </DoubleAnimationUsingKeyFrames>
+
+        </Storyboard>
+        <Storyboard x:Key="CloseMenu" Timeline.DesiredFrameRate="60">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="300"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="60"/>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="ellipseImgCompany">
+                <EasingDoubleKeyFrame KeyTime="0" Value="150"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="40"/>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="ellipseImgCompany">
+                <EasingDoubleKeyFrame KeyTime="0" Value="150"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="40"/>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="lblCompanyName">
+                <EasingDoubleKeyFrame KeyTime="0" Value="50"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
+            <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Border Background="{DynamicResource MaterialDesignLightBackground}" CornerRadius="15" >
+
+        <!--Menú desplegable-->
+        <DockPanel Background="Transparent">
+            
+            <materialDesign:ColorZone
+                VerticalAlignment="Stretch"
+                Height="Auto"
+                materialDesign:ShadowAssist.ShadowDepth="Depth5"
+                CornerRadius="15 0 0 15">
+                <Grid Background="Transparent">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Margin="0 15 5 0">
+                        <!--BOTONES DESPLIEGUE MENU-->
+                        <Button x:Name="ButtonCloseMenu" BorderBrush="{x:Null}" Width="50" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Background="{x:Null}" Cursor="Hand" Click="ButtonCloseMenu_Click">
+                            <materialDesign:PackIcon Width="25" Height="25" Kind="ArrowLeft"></materialDesign:PackIcon>
+                        </Button>
+                        <Button x:Name="ButtonOpenMenu" Grid.Row="0" Visibility="Collapsed" BorderBrush="{x:Null}" Width="50" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Background="{x:Null}" Click="ButtonOpenMenu_Click" Cursor="Hand">
+                            <materialDesign:PackIcon Width="25" Height="25" Kind="Menu"></materialDesign:PackIcon>
+                        </Button>
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Row="1" Height="Auto" VerticalAlignment="Center" DockPanel.Dock="Left" x:Name="GridMenu" Width="300px" HorizontalAlignment="Left" Background="{DynamicResource MaterialDesignLightBackground}">
+
+                        <!--FOTO EMPRESA-->
+                        <StackPanel Margin="0 15">
+                            <materialDesign:Card x:Name="ellipseImgCompany" UniformCornerRadius="75" Width="150">
+                                <Ellipse Grid.Row="1" Stretch="UniformToFill">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="/placeholder.jpg" />
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </materialDesign:Card>  
+                            <Label Height="40" x:Name="lblCompanyName" Content="{Binding Path=Company.Name}" VerticalContentAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="2"/>
+                        </StackPanel>
+
+                        <!--SECCIONES-->
+                        <StackPanel>
+                            <Button Style="{x:Null}" BorderThickness="0" Background="Transparent" Grid.Row="3" x:Name="ButtonHome" HorizontalContentAlignment="Left" Cursor="Hand" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="LoadHomeView">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Margin="17 0" VerticalAlignment="Center" Width="25" Height="25" Kind="Home"/>
+                                    <TextBlock Text="Home" VerticalAlignment="Center" Padding="15" FontSize="18"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{x:Null}" BorderThickness="0" Background="Transparent" Grid.Row="4" x:Name="ButtonUsers" HorizontalContentAlignment="Left" Cursor="Hand" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="LoadMembersView">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Margin="17 0" VerticalAlignment="Center" Width="25" Height="25" Kind="AccountGroup"/>
+                                    <TextBlock Text="Members" VerticalAlignment="Center" Padding="15" FontSize="18"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{x:Null}" BorderThickness="0" Background="Transparent" Grid.Row="5" x:Name="ButtonMessages" HorizontalContentAlignment="Left" Cursor="Hand" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="LoadMessagesView">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Margin="17 0" VerticalAlignment="Center" Width="25" Height="25" Kind="AndroidMessages"/>
+                                    <TextBlock Text="Messages" VerticalAlignment="Center" Padding="15" FontSize="18"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{x:Null}" BorderThickness="0" Background="Transparent" Grid.Row="6" x:Name="ButtonGroups" HorizontalContentAlignment="Left" Cursor="Hand" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="LoadGroupsView">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Margin="17 0" VerticalAlignment="Center" Width="25" Height="25" Kind="CheckboxMultipleBlankCircle"/>
+                                    <TextBlock Text="Groups" VerticalAlignment="Center" Padding="15" FontSize="18"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{x:Null}" BorderThickness="0" Background="Transparent" Grid.Row="7" x:Name="ButtonUsage" HorizontalContentAlignment="Left" Cursor="Hand" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="LoadUsageView">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Margin="17 0" VerticalAlignment="Center" Width="25" Height="25" Kind="ChartLine"/>
+                                    <TextBlock Text="Usage" VerticalAlignment="Center" Padding="15" FontSize="18"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{x:Null}" BorderThickness="0" Background="Transparent" Grid.Row="8" x:Name="ButtonProperties" HorizontalContentAlignment="Left" Cursor="Hand" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="LoadPropertiesView">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Margin="15 0" VerticalAlignment="Center" Width="25" Height="25" Kind="Settings"/>
+                                    <TextBlock Text="Properties" VerticalAlignment="Center" Padding="15" FontSize="18"/>
+                                </StackPanel>
+                            </Button>
+
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:ColorZone>
+            <!--Vista Secciones-->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <!--Barra superior-->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="CloseButton" Grid.Column="3" Margin="0 0 0 0" Padding="0" Width="30" Height="Auto"  BorderBrush="{x:Null}" HorizontalAlignment="Center" Background="{x:Null}" Click="CloseButton_Click" Cursor="Hand">
+                        <materialDesign:PackIcon Width="18" Height="18" Kind="Power" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
+                    </Button>
+
+                    <Button x:Name="MaximizeButton" Grid.Column="2" Margin="0 0 0 0" Padding="0" Width="30" Height="Auto" BorderBrush="{x:Null}" HorizontalAlignment="Center" Background="{x:Null}" Click="MaximizeButton_Click" Cursor="Hand">
+                        <materialDesign:PackIcon Width="18" Height="18" Kind="WindowMaximize" VerticalAlignment="Center"/>
+                    </Button>
+
+                    <Button x:Name="MinimizeButton" Grid.Column="1" Margin="0 0 0 0" Padding="0" Width="30" Height="Auto" BorderBrush="{x:Null}" HorizontalAlignment="Center" Background="{x:Null}" Click="MinimizeButton_Click" Cursor="Hand">
+                        <materialDesign:PackIcon Width="18" Height="18" Kind="WindowMinimize" VerticalAlignment="Center"/>
+                    </Button>
+
+                    <StackPanel  Height="Auto" Orientation="Horizontal" FlowDirection="RightToLeft" Grid.Column="0" Background="Transparent" MouseLeftButtonDown="MoveWindow">
+                        <materialDesign:PackIcon Margin="7 0 0 0" Grid.Column="1" VerticalAlignment="Center"  Width="18" Height="18" Kind="ArrowAll"/>
+                    </StackPanel>
+                </Grid>
+
+                
+                <Frame Grid.Row="1" Height="Auto" x:Name="MainFrame" NavigationUIVisibility="Hidden" Margin="0,0,0,0" />
+                
+                
+
+            </Grid>
+        </DockPanel>
+    </Border>
+</Window>
