@@ -12,9 +12,9 @@
     <UserControl.Resources>
         <DataTemplate x:Key="groupMember">
             <WrapPanel>
-                <TextBlock Text="{Binding Path=TaskName}" />
+                <!--<TextBlock Text="{Binding Path=TaskName}" />
                 <TextBlock Text="{Binding Path=Description}"/>
-                <TextBlock Text="{Binding Path=Priority}"/>
+                <TextBlock Text="{Binding Path=Priority}"/>-->
             </WrapPanel>
         </DataTemplate>
     </UserControl.Resources>
@@ -35,10 +35,14 @@
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
 
-            <materialDesign:Card Grid.Column="0" Grid.Row="0" Grid.RowSpan="6" UniformCornerRadius="15" OpacityMask="Black" >
-                <Image Source="/placeholder.jpg"></Image>
+            <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="6" Source="/placeholder.jpg">
+                <Image.Clip>
+                    <RectangleGeometry RadiusX="15"
+                                    RadiusY="15"
+                                    Rect="0,0,200,200"/>
+                </Image.Clip>
+            </Image>
                 
-            </materialDesign:Card>
 
             <WrapPanel VerticalAlignment="Center" Grid.Row="1" Grid.Column="1">
                 <TextBlock VerticalAlignment="Center" FontSize="20" FontWeight="Bold">Name:</TextBlock>
@@ -56,11 +60,11 @@
             </WrapPanel>
             <WrapPanel VerticalAlignment="Center" Grid.Row="3"  Grid.Column="1">
                 <TextBlock VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold">Messages:</TextBlock>
-                <TextBlock VerticalAlignment="Bottom" FontSize="20" Margin="10 0 0 0">4853</TextBlock>
-            </WrapPanel>
+                 <TextBlock x:Name="messagesNumText" VerticalAlignment="Bottom" FontSize="20" Margin="10 0 0 0"/>
+                </WrapPanel>
             <WrapPanel VerticalAlignment="Center" Grid.Row="4"  Grid.Column="1">
                 <TextBlock VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold">Participants:</TextBlock>
-                <TextBlock VerticalAlignment="Bottom" FontSize="20" Margin="10 0 0 0">4</TextBlock>
+                <TextBlock x:Name="participantsNumText" VerticalAlignment="Bottom" FontSize="20" Margin="10 0 0 0"/>
             </WrapPanel>
 
             <Button
@@ -78,11 +82,54 @@
             <!--Command="{x:Static materialDesign:Flipper.FlipCommand}"-->
         </Grid>
         </materialDesign:Card>
-        <materialDesign:Card Height="30" Width="30" UniformCornerRadius="20" Margin="20 -20" Panel.ZIndex="2">
+        <!--<materialDesign:Card Height="30" Width="30" UniformCornerRadius="20" Margin="20 -20" Panel.ZIndex="2">
             <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Width="20" Height="20" Kind="AccountArrowDownOutline"></materialDesign:PackIcon>
-        </materialDesign:Card>
+        </materialDesign:Card>-->
         
-        <materialDesign:Card Height="20" UniformCornerRadius="10" Margin="20 -35" Panel.ZIndex="0">
+        <materialDesign:Card Height="Auto" UniformCornerRadius="10" Margin="20 -20" Panel.ZIndex="0">
+            <Expander Margin="0 20 0 0" HorizontalAlignment="Stretch" Background="Transparent">
+                <Expander.Header>
+                        <WrapPanel HorizontalAlignment="Center">
+                        <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Width="20" Height="20" Kind="AccountArrowDownOutline"></materialDesign:PackIcon>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Group members</TextBlock>
+                        </WrapPanel>
+                </Expander.Header>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center"
+                            Margin="24,8,24,16">
+                    <ListView x:Name="membersGrid" materialDesign:ListBoxItemAssist.ShowSelection="False">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn
+                                    DisplayMemberBinding="{Binding Path=Group.Members.Name}"
+                                    Header="Code" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <!--<DataGrid
+                        x:Name="membersGrid"
+                        HeadersVisibility="None"
+                        Background="Transparent"
+                        ColumnWidth="0.25*"                         
+                        HorizontalAlignment="Stretch"
+                        CanUserAddRows="False"
+                        SelectionUnit="FullRow"
+                        SelectionMode="Extended"
+                        AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Width="80">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ToggleButton Style="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0">
+                                            <TextBlock FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center">Admin</TextBlock>
+                                        </ToggleButton>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Path=Group.Members.Name}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>-->
+                </StackPanel>
+            </Expander>
         </materialDesign:Card>
 
     </StackPanel>

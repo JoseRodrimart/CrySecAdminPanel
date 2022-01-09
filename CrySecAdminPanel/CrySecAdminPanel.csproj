@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Entities\GroupType.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="boton-de-inicio.png" />
     <None Remove="placeholder.jpg" />
   </ItemGroup>
