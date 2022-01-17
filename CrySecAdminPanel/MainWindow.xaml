@@ -15,7 +15,7 @@
         TextElement.FontSize="14"
         FontFamily="{materialDesign:MaterialDesignFont}"
         
-        Title="MainWindow" Height="768" Width="1024" MinWidth="1000" MinHeight="618"
+        Title="MainWindow" Height="600" Width="1024" MinWidth="1000" MinHeight="618"
         
         WindowStartupLocation="CenterOwner"
         WindowStyle="None"

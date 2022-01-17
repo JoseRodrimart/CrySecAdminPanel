@@ -8,9 +8,10 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MembersView"
+      Background="Maroon"
       >
 
-    <Grid VerticalAlignment="Stretch">
+    <Grid VerticalAlignment="Stretch" Visibility="Hidden">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>

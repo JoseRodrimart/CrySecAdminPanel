@@ -9,7 +9,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="GroupsView"
      >
-    <Grid VerticalAlignment="Stretch">
+    <Grid VerticalAlignment="Stretch" Visibility="Hidden">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>

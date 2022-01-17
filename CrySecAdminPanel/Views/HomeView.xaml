@@ -14,7 +14,7 @@
       
       >
 
-    <Grid VerticalAlignment="Stretch">
+    <Grid Visibility="Hidden" VerticalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
