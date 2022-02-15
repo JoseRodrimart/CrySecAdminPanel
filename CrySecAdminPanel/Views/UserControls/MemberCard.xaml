@@ -23,7 +23,7 @@
             
             <Ellipse Grid.Column="0" Height="100" Width="100">
                 <Ellipse.Fill>
-                    <ImageBrush ImageSource="/placeholder.jpg" />
+                    <ImageBrush ImageSource="" />
                 </Ellipse.Fill>
             </Ellipse>
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,8 +9,7 @@ using System.Windows.Input;
 namespace CrySecAdminPanel.ViewModel
 {
     public partial class CompanyViewModel
-    {
-        public ICommand AddButton { get; set; }
+    { 
 
         internal abstract class CompanyViewModelCommands : ICommand
         {
@@ -42,5 +42,7 @@ namespace CrySecAdminPanel.ViewModel
                 this.companyViewModel.Company.Name = "clicked";
             }
         }
+        
+        
     }
 }

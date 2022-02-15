@@ -8,10 +8,10 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MembersView"
-      Background="Maroon"
+      Background="Transparent"
       >
 
-    <Grid VerticalAlignment="Stretch" Visibility="Hidden">
+    <Grid VerticalAlignment="Stretch" Visibility="Visible">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
@@ -28,9 +28,10 @@
 
                 <uc:Title Text="Members list"></uc:Title>
 
+                <!--<uc:MemberCard></uc:MemberCard>
                 <uc:MemberCard></uc:MemberCard>
-                <uc:MemberCard></uc:MemberCard>
-                <uc:MemberCard></uc:MemberCard>
+                <uc:MemberCard></uc:MemberCard>-->
+                <ListView ItemsSource="{Binding CryUsers}" ItemTemplate="{StaticResource CryUserTemplate}" HorizontalContentAlignment="Stretch"/>
 
             </StackPanel>
         </ScrollViewer>

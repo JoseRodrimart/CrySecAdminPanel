@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <None Remove="boton-de-inicio.png" />
+    <None Remove="Entities\NewFile1.txt" />
     <None Remove="placeholder.jpg" />
   </ItemGroup>
 
@@ -20,12 +21,14 @@
     <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
     <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.0-beta.90" />
     <PackageReference Include="MaterialDesignThemes" Version="4.3.0" />
+    <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.2" />
+    <PackageReference Include="Refit" Version="6.3.2" />
     <PackageReference Include="ShowMeTheXAML.MSBuild" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="boton-de-inicio.png" />
-    <Resource Include="placeholder.jpg" />
+    <Resource Include="Resources\Images\placeholder.jpg" />
   </ItemGroup>
 
 </Project>

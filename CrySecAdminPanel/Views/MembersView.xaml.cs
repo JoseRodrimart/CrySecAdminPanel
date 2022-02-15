@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CrySecAdminPanel.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace CrySecAdminPanel.Views
         public MembersView()
         {
             InitializeComponent();
+            CryUserViewModel cvm = new CryUserViewModel();
+            this.DataContext = cvm;
         }
     }
 }

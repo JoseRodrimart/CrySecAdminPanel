@@ -116,11 +116,12 @@
                             <materialDesign:Card x:Name="ellipseImgCompany" UniformCornerRadius="75" Width="150">
                                 <Ellipse Grid.Row="1" Stretch="UniformToFill">
                                     <Ellipse.Fill>
-                                        <ImageBrush ImageSource="/placeholder.jpg" />
+                                        <ImageBrush ImageSource="{Binding Company.BitmapImage}"/>
                                     </Ellipse.Fill>
                                 </Ellipse>
                             </materialDesign:Card>  
                             <Label Height="40" x:Name="lblCompanyName" Content="{Binding Path=Company.Name}" VerticalContentAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="2"/>
+                            <Button Content="Listar usuarios" Command="{Binding GetUsers}"/>
                         </StackPanel>
 
                         <!--SECCIONES-->
