@@ -121,7 +121,6 @@
                                 </Ellipse>
                             </materialDesign:Card>  
                             <Label Height="40" x:Name="lblCompanyName" Content="{Binding Path=Company.Name}" VerticalContentAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="2"/>
-                            <Button Content="Listar usuarios" Command="{Binding GetUsers}"/>
                         </StackPanel>
 
                         <!--SECCIONES-->

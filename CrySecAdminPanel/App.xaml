@@ -12,8 +12,7 @@
             </ResourceDictionary.MergedDictionaries>
             
             
-            
-            <DataTemplate x:Key="CryUserTemplate" DataType="{x:Type ListView}">
+            <!--<DataTemplate x:Key="CryUserTemplate" DataType="{x:Type ListView}">
                 <Grid Height="120">
                     <materialDesign:Card VerticalAlignment="Center" Height="100" Width="Auto" UniformCornerRadius="50" >
                         <Grid>
@@ -25,11 +24,11 @@
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
 
-                            <!--<Ellipse Grid.Column="0" Height="100" Width="100">
+                            --><!--<Ellipse Grid.Column="0" Height="100" Width="100">
                                 <Ellipse.Fill>
                                     --><!--<ImageBrush ImageSource="{Binding image}" />--><!--
                                 </Ellipse.Fill>
-                            </Ellipse>-->
+                            </Ellipse>--><!--
 
                             <TextBlock Margin="10"  FontSize="20" TextTrimming="CharacterEllipsis" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1" Text="{Binding name}"/>
 
@@ -37,13 +36,13 @@
 
                             <TextBlock FontSize="20" TextTrimming="CharacterEllipsis" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="3" Text="{Binding mail}"/>
 
-                            <Button Height="25" Width="25" Grid.Column="4" Style="{x:Null}" BorderThickness="0" Background="Transparent" HorizontalContentAlignment="Center" Cursor="Hand">
+                            <Button Height="25" Width="25" Grid.Column="4" Style="{x:Null}" BorderThickness="0" Background="Transparent" HorizontalContentAlignment="Center" Cursor="Hand" Command="{Binding DeleteUser}" CommandParameter="{Binding}">
                                 <materialDesign:PackIcon  HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25" Kind="RemoveCircle" Foreground="#FFD25B5B"/>
                             </Button>
                         </Grid>
                     </materialDesign:Card>
                 </Grid>
-            </DataTemplate>
+            </DataTemplate>-->
         </ResourceDictionary>
     </Application.Resources>
 </Application>

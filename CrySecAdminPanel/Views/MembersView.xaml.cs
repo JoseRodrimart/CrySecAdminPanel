@@ -1,6 +1,8 @@
 ﻿using CrySecAdminPanel.ViewModel;
+using PanelAdmin.Entities;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +28,14 @@ namespace CrySecAdminPanel.Views
             InitializeComponent();
             CryUserViewModel cvm = new CryUserViewModel();
             this.DataContext = cvm;
+        }
+
+        private void DeleteUser(object sender, RoutedEventArgs e)
+        {
+            var userViewModel = ((CryUserViewModel)this.DataContext);
+            var user = (sender as Button).DataContext as CryUser;
+            userViewModel.DeleteUser(user.id);
+            Trace.WriteLine(user.id);
         }
     }
 }

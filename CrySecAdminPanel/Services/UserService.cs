@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
@@ -26,6 +27,11 @@ namespace CrySecAdminPanel.Services
         public List<CryUser> GetUsersByCompanyId()
         {
             return usersApi.GetUsersByCompanyId((int)App.Current.Properties["CompanyId"]).Result;
+        }
+
+        public void DeleteUserById(int id)
+        {
+            usersApi.DeleteUserById(id);
         }
 
         //async public Task<HttpContent?> GetUsers()

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -16,5 +17,8 @@ namespace CrySecAdminPanel.Repositories
 
         [Post("/user/hello")]
         Task<string> hello();
+        
+        [Delete("/user/{id}/company")]
+        Task DeleteUserById([AliasAs("id")] int id);
     }
 }

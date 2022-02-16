@@ -13,5 +13,6 @@ namespace CrySecAdminPanel
     /// </summary>
     public partial class App : Application
     {
+
     }
 }
