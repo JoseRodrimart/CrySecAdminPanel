@@ -13,6 +13,7 @@ namespace CrySecAdminPanel.ViewModel
     public partial class CryGroupViewModel
     {
         private GroupService groupService = new GroupService();
+        private UserService userService = new UserService();
         private BindingList<CryGroup> _cryGroups = new BindingList<CryGroup>();
 
         public BindingList<CryGroup> CryGroups { get { return _cryGroups; } }
@@ -26,8 +27,18 @@ namespace CrySecAdminPanel.ViewModel
         {
             CryGroups.Clear();
             List<CryGroup> groups = groupService.GetGroups();
-            groups.ForEach(u => Trace.WriteLine(u.Name));
+            Trace.WriteLine("Grupos");
+            groups.ForEach(u => Trace.WriteLine(u.ToString()));
+            Trace.WriteLine("Administradores");
+            groups.ForEach(g => g.adminUsers.ForEach(admin => Trace.WriteLine(admin.ToString())));
+            Trace.WriteLine("Usuarios");
+            groups.ForEach(g => g.regularUsers.ForEach(regular => Trace.WriteLine(regular.ToString())));
             groups.ForEach(CryGroups.Add);  
+        }
+        public void UpdateGroup(CryGroup group)
+        {
+            groupService.UpdateGroup(group);
+            SetGroups();
         }
 
     }

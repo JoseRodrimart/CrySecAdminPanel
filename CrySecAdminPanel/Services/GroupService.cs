@@ -21,5 +21,10 @@ namespace CrySecAdminPanel.Services
         {
             return groupApi.GetGroups((int)App.Current.Properties["CompanyId"]).Result;
         }
+
+        public void UpdateGroup(CryGroup group)
+        {
+            groupApi.UpdateGroup(group);
+        }
     }
 }

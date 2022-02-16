@@ -20,5 +20,8 @@ namespace CrySecAdminPanel.Repositories
         
         [Delete("/user/{id}/company")]
         Task DeleteUserById([AliasAs("id")] int id);
+
+        [Get("/group/{id}/companyusersnotincluded")]
+        Task<List<CryUser>> GetNotMembers([AliasAs("id")] int idGroup);
     }
 }

@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              Margin="20 20"
              Width="600px"
-             d:DesignHeight="500" d:DesignWidth="500">
+             d:DesignHeight="500" d:DesignWidth="600">
     <!--En los recursos del userControl incluimos un patrón de miembro, para usarlo de plantilla con la lista de miembros del grupo-->
     <UserControl.Resources>
         <DataTemplate x:Key="groupMember">
@@ -20,55 +20,64 @@
         </DataTemplate>
     </UserControl.Resources>
     
-    <StackPanel>
+    <StackPanel Width="600px">
         <materialDesign:Card Height="200" Width="Auto" UniformCornerRadius="15" Panel.ZIndex="1">
-        <Grid HorizontalAlignment="Left" Height="200" Width="Auto">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="20"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="20"/>
-            </Grid.RowDefinitions>
+            <Grid HorizontalAlignment="Left" Height="200" Width="Auto">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="390"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
 
-            <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="6" Source="/placeholder.jpg">
-                <Image.Clip>
-                    <RectangleGeometry RadiusX="15"
+                <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="6" Source="/placeholder.jpg">
+                    <Image.Clip>
+                        <RectangleGeometry RadiusX="15"
                                     RadiusY="15"
                                     Rect="0,0,200,200"/>
-                </Image.Clip>
-            </Image>
-                
+                    </Image.Clip>
+                </Image>
 
-            <WrapPanel VerticalAlignment="Center" Grid.Row="1" Grid.Column="1">
-                <TextBlock VerticalAlignment="Center" FontSize="18" FontWeight="Bold">Name:</TextBlock>
+
+                <WrapPanel VerticalAlignment="Center" Grid.Row="1" Grid.Column="1">
+                    <TextBlock VerticalAlignment="Center" FontSize="18" FontWeight="Bold">Name:</TextBlock>
                     <TextBlock x:Name="textName" Text="{Binding Name}" Visibility="Hidden" VerticalAlignment="Center" FontSize="20" Margin="10 0 0 0"/>
                     <TextBox x:Name="inputName" Style="{DynamicResource MaterialDesignTextBoxBase}"  MinWidth="150" MaxLength="30" FontSize="16"  Background="#e0eef0" Foreground="Black" Visibility="Visible" Margin="10 0 0 0" />
-            </WrapPanel>
-            <WrapPanel VerticalAlignment="Center"  Grid.Row="2"  Grid.Column="1">
-                <TextBlock VerticalAlignment="Center" FontSize="20" FontWeight="Bold">Type:</TextBlock>
+                </WrapPanel>
+                <WrapPanel VerticalAlignment="Center"  Grid.Row="2"  Grid.Column="1">
+                    <TextBlock VerticalAlignment="Center" FontSize="20" FontWeight="Bold">Type:</TextBlock>
                     <TextBlock Visibility="Collapsed" Text="{Binding Type}" x:Name="textType" VerticalAlignment="Center" FontSize="20" Margin="30 0 0 0"/>
                     <ComboBox Visibility="Visible" FontSize="16" Style="{DynamicResource MaterialDesignComboBox}" VerticalAlignment="Center" Margin="30 0 0 0" SelectedIndex="1">
-                    <ComboBoxItem FontSize="12" Content="Notifications"/>
-                    <ComboBoxItem FontSize="12" Content="Chat Group"/>
-                    <ComboBoxItem FontSize="12" Content="Test"/>
-                </ComboBox>
-            </WrapPanel>
-            <WrapPanel VerticalAlignment="Center" Grid.Row="3"  Grid.Column="1">
-                <TextBlock VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold">Administrators:</TextBlock>
-                 <TextBlock x:Name="messagesNumText" Text="{Binding NumberOfAdmins}"  VerticalAlignment="Bottom" FontSize="20" Margin="10 0 0 0"/>
+                        <ComboBoxItem FontSize="12" Content="Notifications"/>
+                        <ComboBoxItem FontSize="12" Content="Chat Group"/>
+                        <ComboBoxItem FontSize="12" Content="Test"/>
+                    </ComboBox>
                 </WrapPanel>
-            <WrapPanel VerticalAlignment="Center" Grid.Row="4"  Grid.Column="1">
-                    <TextBlock VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold">Members:</TextBlock>
-                <TextBlock x:Name="participantsNumText" Text="{Binding numberOfMembers}" VerticalAlignment="Bottom" FontSize="20" Margin="10 0 0 0"/>
-            </WrapPanel>
-
-            <Button
+                <WrapPanel VerticalAlignment="Center" Grid.Row="3"  Grid.Column="1">
+                    <TextBlock VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold">Administrators:</TextBlock>
+                    <TextBlock x:Name="messagesNumText" Text="{Binding NumberOfAdmins}"  VerticalAlignment="Bottom" FontSize="20" Margin="10 0 0 0"/>
+                </WrapPanel>
+                <Grid Grid.Row="4"  Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="70"/>
+                    </Grid.ColumnDefinitions>
+                    <WrapPanel Grid.Column="0" VerticalAlignment="Center" >
+                        <TextBlock VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold">Members:</TextBlock>
+                        <TextBlock x:Name="participantsNumText" Text="{Binding numberOfMembers}" VerticalAlignment="Bottom" FontSize="20" Margin="10 0 0 0"/>
+                    </WrapPanel>
+                    <WrapPanel FlowDirection="LeftToRight" Grid.Column="1" VerticalAlignment="Center" >
+                        <Button Background="Black"/>
+                        <Button Background="Red"/>
+                    </WrapPanel>
+                </Grid>
+                <Button
                         Margin="10 10 10 10"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Top"
@@ -78,26 +87,32 @@
                         BorderBrush="{x:Null}"
                         Click="EnterEditMode"
                         Width="30">
-                <materialDesign:PackIcon Margin="0 0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="20" Height="20" Kind="Edit" Foreground="Black"/>
-            </Button>
-            <!--Command="{x:Static materialDesign:Flipper.FlipCommand}"-->
-        </Grid>
+                    <materialDesign:PackIcon Margin="0 0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="20" Height="20" Kind="Edit" Foreground="Black"/>
+                </Button>
+            </Grid>
         </materialDesign:Card>
-        <!--<materialDesign:Card Height="30" Width="30" UniformCornerRadius="20" Margin="20 -20" Panel.ZIndex="2">
-            <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Width="20" Height="20" Kind="AccountArrowDownOutline"></materialDesign:PackIcon>
-        </materialDesign:Card>-->
-        
         <materialDesign:Card Height="Auto" UniformCornerRadius="10" Margin="20 -20" Panel.ZIndex="0">
             <Expander Margin="0 20 0 0" HorizontalAlignment="Stretch" Background="Transparent">
                 <Expander.Header>
-                        <WrapPanel HorizontalAlignment="Center">
+                    <WrapPanel HorizontalAlignment="Center">
                         <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Width="20" Height="20" Kind="AccountArrowDownOutline"></materialDesign:PackIcon>
                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Group members</TextBlock>
-                        </WrapPanel>
+                    </WrapPanel>
                 </Expander.Header>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center"
                             Margin="24,8,24,16">
-                    <ListView x:Name="membersGrid" materialDesign:ListBoxItemAssist.ShowSelection="False">
+
+                    <ListView  ItemsSource="{Binding RegularUsers}" Width="Auto" HorizontalContentAlignment="Stretch">
+                        <ListView.ItemTemplate >
+                            <DataTemplate DataType="{x:Type ListView}">
+                                <TextBlock Text="{Binding Mail}"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </Expander>
+
+            <!--<ListView x:Name="membersGrid" materialDesign:ListBoxItemAssist.ShowSelection="False">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn
@@ -106,7 +121,7 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <!--<DataGrid
+                    --><!--<DataGrid
                         x:Name="membersGrid"
                         HeadersVisibility="None"
                         Background="Transparent"
@@ -128,9 +143,9 @@
                             </DataGridTemplateColumn>
                             <DataGridTextColumn Header="Name" Binding="{Binding Path=Group.Members.Name}"/>
                         </DataGrid.Columns>
-                    </DataGrid>-->
+                    </DataGrid>--><!--
                 </StackPanel>
-            </Expander>
+            </Expander>-->
         </materialDesign:Card>
 
     </StackPanel>

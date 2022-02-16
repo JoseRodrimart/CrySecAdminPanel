@@ -1,4 +1,5 @@
-﻿using CrySecAdminPanel.Entities;
+﻿
+using PanelAdmin.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace CrySecAdminPanel.Views.UserControls
     public partial class GroupCard : UserControl
     {
 
-        public Group Group { get; set; }
+        public CryGroup CryGroup { get; set; }
 
         public GroupCard()
         {

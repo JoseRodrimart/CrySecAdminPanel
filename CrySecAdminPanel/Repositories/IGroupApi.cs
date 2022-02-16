@@ -12,5 +12,7 @@ namespace CrySecAdminPanel.Repositories
     {
         [Get("/company/{id}/group")]
         Task<List<CryGroup>> GetGroups([AliasAs("id")] int idCompany);
+        [Put("/group")]
+        Task UpdateGroup(CryGroup group);   
     }
 }
