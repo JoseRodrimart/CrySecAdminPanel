@@ -8,7 +8,19 @@ namespace CrySecAdminPanel.Entities
 {
     public class Group
     {
+        public int Id { get; set; }
         public String Name { get; set; }
+        public String Description { get; set; }
+        public String Image { get; set; }
+        
+        public Group(int Id, String Name, String Description, String Image)
+        {
+            this.Id = Id;
+            this.Name = Name;
+            this.Description = Description; 
+            this.Image = Image;
+        }
+        /*
         public EGroupType Type { get; set; }
         public int Messages { get; set; }
         public List<GroupMember> Members { get; set; }
@@ -40,6 +52,6 @@ namespace CrySecAdminPanel.Entities
                 Mail = mail;
                 IsAdmin = isAdmin;
             }
-        }
+        }*/
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CrySecAdminPanel.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,14 @@ namespace CrySecAdminPanel.Views
         public GroupsView()
         {
             InitializeComponent();
+            CryGroupViewModel cvm = new CryGroupViewModel();
+            this.DataContext = cvm;
+        }
+
+        private void SetGroups(object sender, RoutedEventArgs e)
+        {
+            var groupViewModel = ((CryGroupViewModel)this.DataContext);
+            groupViewModel.SetGroups();
         }
     }
 }

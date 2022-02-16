@@ -18,20 +18,20 @@ namespace PanelAdmin.Entities
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public string Image { get; set; }
+        public string image { get; set; }
 
         private BitmapImage _bitmapImage;
         public BitmapImage BitmapImage { get
             {
                 if (_bitmapImage == null)
                 {
-                    if (Image == null)
+                    if (image == null)
                     {
                         _bitmapImage = new BitmapImage(new Uri(@"C:\Users\Fernando\Source\Repos\CrySecAdminPanel\CrySecAdminPanel\Resources\Images\placeholder.jpg", UriKind.Absolute));
                     }
                     else
                     {
-                        _bitmapImage = new BitmapImage(new Uri(Image, UriKind.Absolute));
+                        _bitmapImage = new BitmapImage(new Uri(image, UriKind.Absolute));
                     }
                 }
                 return _bitmapImage; 

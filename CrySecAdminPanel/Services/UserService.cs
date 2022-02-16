@@ -33,19 +33,5 @@ namespace CrySecAdminPanel.Services
         {
             usersApi.DeleteUserById(id);
         }
-
-        //async public Task<HttpContent?> GetUsers()
-        //{
-        //     HttpContent httpContent = usersApi.GetAllUsers().Result;
-
-        //     using var utf8Json = await httpContent.ReadAsStreamAsync().ConfigureAwait(false);
-
-        //     return await System.Text.Json.JsonSerializer.DeserializeAsync<HttpContent>(utf8Json, options).ConfigureAwait(false);
-
-        //}
-        public void Hello()
-        {
-            Trace.WriteLine(usersApi.hello().Result);
-        }
     }
 }

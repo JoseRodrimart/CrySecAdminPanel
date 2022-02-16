@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PanelAdmin.Entities
 {
@@ -6,9 +7,11 @@ namespace PanelAdmin.Entities
     {
         public int Id { get; set; }
         public String Name { get; set; }
-        public String Description { get; set; }
+        public String Type { get; set; }
         public String Image { get; set; }
-        //public List<CryUser> regularUsers;
-        //public List<CryUser> adminUsers;
+        
+        public List<CryUser> regularUsers { get; set; }
+        
+        public List<CryUser> adminUsers { get; set; }
     }
 }

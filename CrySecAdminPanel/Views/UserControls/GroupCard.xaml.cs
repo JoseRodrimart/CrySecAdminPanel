@@ -27,11 +27,11 @@ namespace CrySecAdminPanel.Views.UserControls
         public GroupCard()
         {
             InitializeComponent();
-            var members = new List<Group.GroupMember>() { new Group.GroupMember("Jose","jose@mail.com",true), new Group.GroupMember("Fernando","fernando@mail.com",false), new Group.GroupMember("Jonatan","jonatan@mail.com",false)};
+         /*   var members = new List<Group.GroupMember>() { new Group.GroupMember("Jose","jose@mail.com",true), new Group.GroupMember("Fernando","fernando@mail.com",false), new Group.GroupMember("Jonatan","jonatan@mail.com",false)};
             Group = new Group("Grupo", Group.EGroupType.Chat, 5, members);
             membersGrid.ItemsSource = (System.Collections.IEnumerable)Group.Members;
             messagesNumText.Text = Group.Messages.ToString();
-            participantsNumText.Text = Group.Members.Count.ToString();
+            participantsNumText.Text = Group.Members.Count.ToString();*/
         }
 
         private void EnterEditMode(object sender, RoutedEventArgs e)

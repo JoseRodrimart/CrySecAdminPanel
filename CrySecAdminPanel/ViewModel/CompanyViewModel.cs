@@ -17,7 +17,7 @@ namespace CrySecAdminPanel.ViewModel
         private CompanyService companyService = new CompanyService(); 
         public CompanyViewModel()
         {
-            Company = new Company("Empresa");
+            SetCompany();
         }
 
         private void SetCompany()

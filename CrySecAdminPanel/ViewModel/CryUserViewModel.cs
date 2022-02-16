@@ -26,9 +26,12 @@ namespace CrySecAdminPanel.ViewModel
         //}
         public UserService cryUserService = new UserService();
 
+        public float FlipperWidth { get; set; }
+
         public CryUserViewModel()
         {
-           // _cryUsers = new BindingList<CryUser>();
+            // _cryUsers = new BindingList<CryUser>();
+            FlipperWidth = 30000;
             SetUsers();
         }
 

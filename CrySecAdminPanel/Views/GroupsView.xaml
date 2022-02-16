@@ -9,7 +9,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="GroupsView"
      >
-    <Grid VerticalAlignment="Stretch" Visibility="Hidden">
+    <Grid VerticalAlignment="Stretch" Visibility="Visible">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
@@ -26,8 +26,18 @@
 
                 <uc:Title Text="Group list"></uc:Title>
 
-                <uc:GroupCard></uc:GroupCard>
-                <uc:GroupCard></uc:GroupCard>
+                <WrapPanel HorizontalAlignment="Center">
+                    <!--<uc:GroupCard/>
+                    <uc:GroupCard/>
+                    <uc:GroupCard/>
+                    <uc:GroupCard/>
+                    <uc:GroupCard/>
+                    <uc:GroupCard/>
+                    <uc:GroupCard/>-->
+                </WrapPanel>
+                <Button Height="25" Width="25" Grid.Column="4" Style="{x:Null}" BorderThickness="0" Background="Transparent" HorizontalContentAlignment="Center" Cursor="Hand" Click="SetGroups">
+                    <materialDesign:PackIcon  HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25" Kind="Check" Foreground="#FFD25B5B"/>
+                </Button>
 
             </StackPanel>
         </ScrollViewer>

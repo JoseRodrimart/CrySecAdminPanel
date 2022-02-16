@@ -23,68 +23,57 @@
             <TextBlock FontSize="35" Grid.Row="0" Text="Members"></TextBlock>
         </WrapPanel>
 
-        <ScrollViewer Grid.Row="1">
+        <ScrollViewer  x:Name="TS" Grid.Row="1" CanContentScroll="True" PreviewMouseWheel="TS_PreviewMouseWheel">
             <StackPanel Margin="30 0" Orientation="Vertical">
 
                 <uc:Title Text="Members list"></uc:Title>
-
-                <!--<uc:MemberCard></uc:MemberCard>
-                <uc:MemberCard></uc:MemberCard>
-                <uc:MemberCard></uc:MemberCard>-->
-                <!--ItemTemplate="{StaticResource CryUserTemplate}"-->
-                <ListView  ItemsSource="{Binding CryUsers}" HorizontalContentAlignment="Stretch">
+                <ListView  ItemsSource="{Binding CryUsers}" Width="Auto" HorizontalContentAlignment="Stretch">
                     <ListView.ItemTemplate >
                         <DataTemplate DataType="{x:Type ListView}">
-                            <!--<Grid Height="120" Style="{x:Null}">-->
-                                <materialDesign:Flipper>
-                                    <!--Style="{StaticResource MaterialDesignCardFlipper}">-->
-                                    <materialDesign:Flipper.FrontContent>
-                                        <materialDesign:Card VerticalAlignment="Center" Height="100" Width="Auto" UniformCornerRadius="50" >
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="100"/>
-                                                    <ColumnDefinition/>
-                                                    <ColumnDefinition Width="25"/>
-                                                    <ColumnDefinition/>
-                                                    <ColumnDefinition Width="100"/>
-                                                </Grid.ColumnDefinitions>
+                            <materialDesign:Card VerticalAlignment="Center" Height="100" UniformCornerRadius="50" Width="Auto" >
+                                <Grid>
+                                    <Grid x:Name="GridStandard" Visibility="Visible">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="25"/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="100"/>
+                                        </Grid.ColumnDefinitions>
 
-                                                <!--<Ellipse Grid.Column="0" Height="100" Width="100">
-                <Ellipse.Fill>
-                    -->
-                                                <!--<ImageBrush ImageSource="{Binding image}" />-->
-                                                <!--
-                </Ellipse.Fill>
-            </Ellipse>-->
+                                        <Ellipse Grid.Column="0" Height="100" Width="100">
+                                            <Ellipse.Fill>
+                                                <ImageBrush ImageSource="{Binding BitmapImage}" />
+                                            </Ellipse.Fill>
+                                        </Ellipse>
 
-                                                <TextBlock Margin="10"  FontSize="20" TextTrimming="CharacterEllipsis" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1" Text="{Binding name}"/>
+                                        <TextBlock Margin="10"  FontSize="20" TextTrimming="CharacterEllipsis" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1" Text="{Binding Name}"/>
 
-                                                <TextBlock FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Text="|"/>
+                                        <TextBlock FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Text="|"/>
 
-                                                <TextBlock FontSize="20" TextTrimming="CharacterEllipsis" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="3" Text="{Binding mail}"/>
+                                        <TextBlock FontSize="20" TextTrimming="CharacterEllipsis" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="3" Text="{Binding Mail}"/>
 
-                                                <Button Height="25" Width="25" Grid.Column="4" Style="{x:Null}" BorderThickness="0" Background="Transparent" HorizontalContentAlignment="Center" Cursor="Hand" Command="{x:Static materialDesign:Flipper.FlipCommand}">
-                                                    <materialDesign:PackIcon  HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25" Kind="RemoveCircle" Foreground="#FFD25B5B"/>
-                                                </Button>
-                                            </Grid>
-                                        </materialDesign:Card>
-                                    </materialDesign:Flipper.FrontContent>
-                                    <materialDesign:Flipper.BackContent>
-                                        <materialDesign:Card VerticalAlignment="Center" Height="100" Width="Auto" UniformCornerRadius="50" Background="#E36F73">
-                                            <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                <TextBlock Margin="10"  FontSize="20" TextTrimming="CharacterEllipsis" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Do you really want to remove the following user?:"/>
-                                                <TextBlock Margin="10"  FontSize="20" TextTrimming="CharacterEllipsis" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{Binding mail}"/>
-                                                <Button Height="25" Width="25"  Style="{x:Null}" BorderThickness="0" Background="Transparent" HorizontalContentAlignment="Center" Cursor="Hand" Command="{x:Static materialDesign:Flipper.FlipCommand}">
-                                                    <materialDesign:PackIcon  HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25" Kind="Check" Foreground="#FFFFFF"/>
-                                                </Button>
-                                                <Button Height="25" Width="25" Grid.Column="4" Style="{x:Null}" BorderThickness="0" Background="Transparent" HorizontalContentAlignment="Center" Cursor="Hand" Command="{x:Static materialDesign:Flipper.FlipCommand}">
-                                                    <materialDesign:PackIcon  HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25" Kind="RemoveCircle" Foreground="#FFFFFF"/>
-                                                </Button>
-                                            </WrapPanel>
-                                        </materialDesign:Card>
-                                    </materialDesign:Flipper.BackContent>
-                                </materialDesign:Flipper>
-                            <!--</Grid>-->
+                                        <Button Height="25" Width="25" Grid.Column="4" Style="{x:Null}" BorderThickness="0" Background="Transparent" HorizontalContentAlignment="Center" Cursor="Hand" Click="ShowDelete">
+                                            <materialDesign:PackIcon  HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25" Kind="RemoveCircle" Foreground="#FFD25B5B"/>
+                                        </Button>
+                                    </Grid>
+                                    <Grid x:Name="GridDelete" Visibility="Collapsed">
+                                        <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock Margin="10"  FontSize="20" TextTrimming="CharacterEllipsis" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1" Text="Do you want to remove the user"/>
+                                            <TextBlock Margin="0"  FontSize="20" TextTrimming="CharacterEllipsis" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1" Text="{Binding mail}"/>
+                                            <TextBlock Margin="0"  FontSize="20" TextTrimming="CharacterEllipsis" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1" Text="?"/>
+
+
+                                            <Button Margin="40 0 0 0" Height="25" Width="25" Style="{x:Null}" BorderThickness="0" Background="Transparent" HorizontalContentAlignment="Center" Cursor="Hand" Click="DeleteUser">
+                                                <materialDesign:PackIcon  HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25" Kind="Check" Foreground="#FFFFFF"/>
+                                            </Button>
+                                            <Button Margin="10 0 0 0" Height="25" Width="25" Style="{x:Null}" BorderThickness="0" Background="Transparent" HorizontalContentAlignment="Center" Cursor="Hand" Click="CancelDelete">
+                                                <materialDesign:PackIcon  HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25" Kind="Cancel" Foreground="#FFFFFF"/>
+                                            </Button>
+                                        </WrapPanel>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:Card>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

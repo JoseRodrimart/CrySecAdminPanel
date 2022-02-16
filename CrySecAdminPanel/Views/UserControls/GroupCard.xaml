@@ -6,12 +6,13 @@
              xmlns:local="clr-namespace:CrySecAdminPanel.Views.UserControls"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:uc="clr-namespace:CrySecAdminPanel.Views.UserControls"
              mc:Ignorable="d" 
-             Margin="0 20"
+             Margin="20 20"
+             Width="600px"
              d:DesignHeight="500" d:DesignWidth="500">
     <!--En los recursos del userControl incluimos un patrón de miembro, para usarlo de plantilla con la lista de miembros del grupo-->
     <UserControl.Resources>
         <DataTemplate x:Key="groupMember">
-            <WrapPanel>
+            <WrapPanel HorizontalAlignment="Center">
                 <!--<TextBlock Text="{Binding Path=TaskName}" />
                 <TextBlock Text="{Binding Path=Description}"/>
                 <TextBlock Text="{Binding Path=Priority}"/>-->
@@ -21,7 +22,7 @@
     
     <StackPanel>
         <materialDesign:Card Height="200" Width="Auto" UniformCornerRadius="15" Panel.ZIndex="1">
-        <Grid Height="200" Width="Auto">
+        <Grid HorizontalAlignment="Left" Height="200" Width="Auto">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="*"/>
@@ -45,26 +46,26 @@
                 
 
             <WrapPanel VerticalAlignment="Center" Grid.Row="1" Grid.Column="1">
-                <TextBlock VerticalAlignment="Center" FontSize="20" FontWeight="Bold">Name:</TextBlock>
-                <TextBlock x:Name="textName" Visibility="Visible" VerticalAlignment="Center" FontSize="20" Margin="10 0 0 0">Example1</TextBlock>
-                <TextBox x:Name="inputName" Style="{DynamicResource MaterialDesignFilledTextBox}" Foreground="Black" Visibility="Hidden" Margin="10 0 0 0">Example1</TextBox>
+                <TextBlock VerticalAlignment="Center" FontSize="18" FontWeight="Bold">Name:</TextBlock>
+                    <TextBlock x:Name="textName" Text="{Binding Name}" Visibility="Hidden" VerticalAlignment="Center" FontSize="20" Margin="10 0 0 0"/>
+                    <TextBox x:Name="inputName" Style="{DynamicResource MaterialDesignTextBoxBase}"  MinWidth="150" MaxLength="30" FontSize="16"  Background="#e0eef0" Foreground="Black" Visibility="Visible" Margin="10 0 0 0" />
             </WrapPanel>
             <WrapPanel VerticalAlignment="Center"  Grid.Row="2"  Grid.Column="1">
                 <TextBlock VerticalAlignment="Center" FontSize="20" FontWeight="Bold">Type:</TextBlock>
-                <TextBlock Visibility="Visible" x:Name="textType" VerticalAlignment="Center" FontSize="20" Margin="10 0 0 0">Notification Group</TextBlock>
-                <ComboBox Visibility="Collapsed" Style="{DynamicResource MaterialDesignFilledComboBox}" VerticalAlignment="Center" Margin="10 0 0 0" SelectedIndex="1">
-                    <ComboBoxItem FontSize="20" Content="Notifications"/>
-                    <ComboBoxItem FontSize="20" Content="Chat Group"/>
-                    <ComboBoxItem FontSize="20" Content="Test"/>
+                    <TextBlock Visibility="Collapsed" Text="{Binding Type}" x:Name="textType" VerticalAlignment="Center" FontSize="20" Margin="30 0 0 0"/>
+                    <ComboBox Visibility="Visible" FontSize="16" Style="{DynamicResource MaterialDesignComboBox}" VerticalAlignment="Center" Margin="30 0 0 0" SelectedIndex="1">
+                    <ComboBoxItem FontSize="12" Content="Notifications"/>
+                    <ComboBoxItem FontSize="12" Content="Chat Group"/>
+                    <ComboBoxItem FontSize="12" Content="Test"/>
                 </ComboBox>
             </WrapPanel>
             <WrapPanel VerticalAlignment="Center" Grid.Row="3"  Grid.Column="1">
-                <TextBlock VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold">Messages:</TextBlock>
-                 <TextBlock x:Name="messagesNumText" VerticalAlignment="Bottom" FontSize="20" Margin="10 0 0 0"/>
+                <TextBlock VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold">Administrators:</TextBlock>
+                 <TextBlock x:Name="messagesNumText" Text="{Binding NumberOfAdmins}"  VerticalAlignment="Bottom" FontSize="20" Margin="10 0 0 0"/>
                 </WrapPanel>
             <WrapPanel VerticalAlignment="Center" Grid.Row="4"  Grid.Column="1">
-                <TextBlock VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold">Participants:</TextBlock>
-                <TextBlock x:Name="participantsNumText" VerticalAlignment="Bottom" FontSize="20" Margin="10 0 0 0"/>
+                    <TextBlock VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold">Members:</TextBlock>
+                <TextBlock x:Name="participantsNumText" Text="{Binding numberOfMembers}" VerticalAlignment="Bottom" FontSize="20" Margin="10 0 0 0"/>
             </WrapPanel>
 
             <Button
