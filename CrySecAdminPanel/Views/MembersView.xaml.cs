@@ -50,6 +50,7 @@ namespace CrySecAdminPanel.Views
             }
         }
 
+
         private void CancelDelete(object sender, RoutedEventArgs e)
         {
             (((((sender as Button).Parent as WrapPanel).Parent as Grid).Parent as Grid).Parent as Card).Background = new SolidColorBrush(Color.FromRgb(255,255,255));
