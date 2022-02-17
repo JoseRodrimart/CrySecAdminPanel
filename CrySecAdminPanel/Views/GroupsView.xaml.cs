@@ -220,6 +220,7 @@ namespace CrySecAdminPanel.Views
         {
             var groupViewModel = ((CryGroupViewModel)this.DataContext);
             CryGroup group = ((sender as Button).DataContext as CryGroup);
+            Trace.WriteLine(group.id);
             groupViewModel.DeleteGroupById(group.id);
         }
     }
