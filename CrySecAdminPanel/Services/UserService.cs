@@ -33,5 +33,9 @@ namespace CrySecAdminPanel.Services
         {
             usersApi.DeleteUserById(id);
         }
+        public List<CryUser> usersNotIncluded(int id)
+        {
+            return usersApi.GetNotMembers(id).Result;
+        }
     }
 }

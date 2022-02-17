@@ -23,6 +23,7 @@ namespace CrySecAdminPanel.Views
     /// </summary>
     public partial class GroupsView : Page
     {
+          List<CryUser> notMembers { get; set; }
         public GroupsView()
         {
             InitializeComponent();
@@ -127,6 +128,21 @@ namespace CrySecAdminPanel.Views
            
             var groupViewModel = ((CryGroupViewModel)this.DataContext);
             groupViewModel.UpdateGroup(updatedGroup);
+        }
+
+        private void NotMembersGroup(object sender, RoutedEventArgs e)
+        {
+            CryGroup group = ((sender as Button).DataContext as CryGroup);
+            var groupViewModel = ((CryGroupViewModel)this.DataContext);
+            StackPanel panel = (sender as Button).Parent as StackPanel;
+
+            ListView members = panel.FindName("usersList") as ListView;
+            ListView notMembersList = panel.FindName("notMembersList") as ListView;
+            
+            notMembersList.ItemsSource = groupViewModel.NotMembersGroup(group);
+            
+            members.Visibility = Visibility.Collapsed;  
+            notMembersList.Visibility = Visibility.Visible;
         }
     }
 }

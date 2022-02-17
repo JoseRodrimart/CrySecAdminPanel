@@ -16,6 +16,8 @@ namespace CrySecAdminPanel.ViewModel
         private UserService userService = new UserService();
         private BindingList<CryGroup> _cryGroups = new BindingList<CryGroup>();
 
+        private List<CryUser> notIncludedMembers { get; set; }
+
         public BindingList<CryGroup> CryGroups { get { return _cryGroups; } }
 
         public CryGroupViewModel()
@@ -39,6 +41,10 @@ namespace CrySecAdminPanel.ViewModel
         {
             groupService.UpdateGroup(group);
             SetGroups();
+        }
+        public List<CryUser> NotMembersGroup(CryGroup group)
+        {
+            return userService.usersNotIncluded(group.id);
         }
 
     }

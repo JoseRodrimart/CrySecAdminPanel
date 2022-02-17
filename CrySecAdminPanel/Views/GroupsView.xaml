@@ -112,14 +112,21 @@
                                             </WrapPanel>
                                         </Expander.Header>
                                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="24,8,24,16">
-                                            <ListView  ItemsSource="{Binding regularUsers}" Width="Auto" HorizontalContentAlignment="Stretch">
+                                            <ListView Name="usersList" ItemsSource="{Binding regularUsers}" Width="Auto" HorizontalContentAlignment="Stretch">
                                                 <ListView.ItemTemplate >
                                                     <DataTemplate DataType="{x:Type ListView}">
                                                         <TextBlock Text="{Binding Mail}"/>
                                                     </DataTemplate>
                                                 </ListView.ItemTemplate>
                                             </ListView>
-                                            <Button Background="Transparent" Margin="0 20 0 0" Style="{x:Null}" BorderBrush="{x:Null}">
+                                            <ListView Name="notMembersList" Width="Auto" HorizontalContentAlignment="Stretch">
+                                                <ListView.ItemTemplate >
+                                                    <DataTemplate DataType="{x:Type ListView}">
+                                                        <TextBlock Text="{Binding Mail}"/>
+                                                    </DataTemplate>
+                                                </ListView.ItemTemplate>
+                                            </ListView>
+                                            <Button Background="Transparent" Margin="0 20 0 0" Style="{x:Null}" BorderBrush="{x:Null}" Click="NotMembersGroup">
                                                 <materialDesign:PackIcon  HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Height="40" Kind="Add" Foreground="LightBlue"/>
                                             </Button>
                                         </StackPanel>

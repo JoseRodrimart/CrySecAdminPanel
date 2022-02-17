@@ -27,7 +27,7 @@ namespace CrySecAdminPanel
         public MainWindow()
         {
             InitializeComponent();
-            App.Current.Properties["CompanyId"] = 11;
+            App.Current.Properties["CompanyId"] = 13;
             CompanyViewModel cvm = new CompanyViewModel();
             this.DataContext = cvm;
             MainFrame.Content = new HomeView();
