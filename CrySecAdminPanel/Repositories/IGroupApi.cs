@@ -18,5 +18,10 @@ namespace CrySecAdminPanel.Repositories
         Task DeleteUserFromGroup([AliasAs("id")]int groupId, [AliasAs("userId")] int userId);
         [Put("/group/{id}/user/{userId}")]
         Task AddMemberToGroup([AliasAs("id")] int groupId, [AliasAs("userId")] int userId);
+
+        [Post("/group/{idCompany}/{name}/{type}")]
+        Task CreateNewGroup([AliasAs("idCompany")] int idCompany, [AliasAs("name")] string name, [AliasAs("type")] string type);
+        [Delete("/group/{id}")]
+        Task DeleteGroupByID([AliasAs("id")] int id);
     }
 }

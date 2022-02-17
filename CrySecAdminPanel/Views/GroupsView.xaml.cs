@@ -191,5 +191,36 @@ namespace CrySecAdminPanel.Views
             groupViewModel.AddMemberToGroup(currentGroup.id, user.Id);
             groupViewModel.SetGroups();
         }
+
+        private void NewGroupNameChanged(object sender, TextChangedEventArgs e)
+        {
+            if (((TextBox)sender).Text.Length == 0) SaveNewGroupButton.IsEnabled = false;
+            else SaveNewGroupButton.IsEnabled = true;
+        }
+
+        private void ClosePopUp(object sender, RoutedEventArgs e)
+        {
+            PopUpBox.IsPopupOpen = false;
+        }
+
+        private void RegisterGroup(object sender, RoutedEventArgs e)
+        {
+            string type = "Chat";
+            switch (ComboboxCreationType.SelectedIndex)
+            {
+                case 0: type = "Notifications"; break;
+                case 1: type = "Chat"; break;
+                case 2: type = "Test"; break;
+            }
+            string name = GroupCreationNameTextBox.Text;
+            (this.DataContext as CryGroupViewModel).CreateNewGroup(name, type);
+        }
+
+        private void DeleteGroup(object sender, RoutedEventArgs e)
+        {
+            var groupViewModel = ((CryGroupViewModel)this.DataContext);
+            CryGroup group = ((sender as Button).DataContext as CryGroup);
+            groupViewModel.DeleteGroupById(group.id);
+        }
     }
 }

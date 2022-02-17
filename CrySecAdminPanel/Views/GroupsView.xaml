@@ -4,6 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CrySecAdminPanel.Views"
+      xmlns:validationRules="clr-namespace:CrySecAdminPanel.validationRules"
+
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:uc="clr-namespace:CrySecAdminPanel.Views.UserControls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -13,7 +15,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="0"/>
         </Grid.RowDefinitions>
 
         <WrapPanel Grid.Row="0" HorizontalAlignment="Center" Width="192">
@@ -30,69 +32,12 @@
                             <ColumnDefinition Width="120"/>
                         </Grid.ColumnDefinitions>
                             <uc:Title Grid.Column="0" Text="Group list"></uc:Title>
-                    <Button Grid.Column="1" Style="{StaticResource MaterialDesignRaisedDarkButton}" Background="#005a9e" Foreground="White">New group</Button>
                 </Grid>
-                <StackPanel Visibility="Visible" Orientation="Horizontal">
-                        <materialDesign:PopupBox StaysOpen="True" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                            <Grid Width="300" Margin="8,8,8,8">
-                                <Grid.Resources>
-                                    <Style TargetType="CheckBox" BasedOn="{StaticResource MaterialDesignCheckBox}">
-                                        <Setter Property="Margin" Value="8,8,10,8" />
-                                    </Style>
-                                    <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignTextBox}">
-                                        <Setter Property="materialDesign:HintAssist.IsFloating" Value="True" />
-                                        <Setter Property="Margin" Value="8,8,8,8" />
-                                    </Style>
-                                </Grid.Resources>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="*" />
-                                </Grid.RowDefinitions>
-                                <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource MaterialDesignHeadline6TextBlock}" Margin="8,8,8,16" Text="NAME" />
-                                <TextBox Grid.Column="0" Grid.Row="1" materialDesign:HintAssist.Hint="Setting 1" Text="200" />
-                                <TextBox Grid.Column="0" Grid.Row="2" materialDesign:HintAssist.Hint="Setting 2" Text="400" />
-                                <TextBox Grid.Column="0" Grid.Row="3" materialDesign:HintAssist.Hint="Setting 3" Text="600" />
-                                <CheckBox Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" />
-                                <CheckBox Grid.Column="1" Grid.Row="2" IsChecked="True" VerticalAlignment="Bottom" />
-                                <CheckBox Grid.Column="1" Grid.Row="3" VerticalAlignment="Bottom" />
-                                <ComboBox Grid.Column="0" Grid.Row="4" materialDesign:HintAssist.Hint="Setting 4" materialDesign:HintAssist.IsFloating="True" MaxDropDownHeight="200" Margin="8">
-                                    <ComboBoxItem Content="25%" />
-                                    <ComboBoxItem Content="50%" />
-                                    <ComboBoxItem Content="75%" />
-                                    <ComboBoxItem Content="100%" />
-                                    <ComboBoxItem Content="150%" />
-                                    <ComboBoxItem Content="200%" />
-                                    <ComboBoxItem Content="250%" />
-                                    <ComboBoxItem Content="500%" />
-                                </ComboBox>
-                                <StackPanel Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
-                                    <Button Content="_Save" Command="{x:Static materialDesign:PopupBox.ClosePopupCommand}" />
-                                    <Button Content="_Cancel" Command="{x:Static materialDesign:PopupBox.ClosePopupCommand}">
-                                        <Button.Style>
-                                            <Style TargetType="Button">
-                                                <Setter Property="Foreground" Value="Red" />
-                                            </Style>
-                                        </Button.Style>
-                                    </Button>
-                                </StackPanel>
-                            </Grid>
-                        </materialDesign:PopupBox>
-                    </StackPanel>
-               
-
+      
                 <ItemsControl Name="lista" ItemsSource="{Binding CryGroups}" Width="Auto">
                     <ItemsControl.ItemTemplate >
-                        <DataTemplate DataType="{x:Type WrapPanel}">
-
-                            <StackPanel Width="600px"  Height="Auto" Margin="0 0 0 20">
+                        <DataTemplate>
+                            <StackPanel Width="600px"  Height="Auto" Margin="20">
                                 <materialDesign:Card Height="200" Width="Auto" UniformCornerRadius="15" Panel.ZIndex="1">
                                     <Grid HorizontalAlignment="Left" Height="200" Width="Auto">
                                         <Grid.ColumnDefinitions>
@@ -105,7 +50,7 @@
                                             <RowDefinition Height="*"/>
                                             <RowDefinition Height="*"/>
                                             <RowDefinition Height="*"/>
-                                            <RowDefinition Height="20"/>
+                                            <RowDefinition Height="5"/>
                                         </Grid.RowDefinitions>
 
                                         <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="6" Source="/placeholder.jpg">
@@ -148,7 +93,7 @@
                                                 <Button Name="Edit" Visibility="Visible" Width="25" Style="{x:Null}" BorderBrush="{x:Null}" Background="Transparent" Click="ShowEditMode">
                                                     <materialDesign:PackIcon  HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25" Kind="Edit" Foreground="#000000"/>
                                                 </Button>
-                                                <Button Name="Delete" Visibility="Visible" Width="25" Style="{x:Null}" BorderBrush="{x:Null}" Background="Transparent" Margin="10 0 0 0" Click="CloseEditMode">
+                                                <Button Name="Delete" Visibility="Visible" Width="25" Style="{x:Null}" BorderBrush="{x:Null}" Background="Transparent" Margin="10 0 0 0" Click="DeleteGroup">
                                                     <materialDesign:PackIcon  HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Height="25" Kind="Delete" Foreground="#FFD25B5B"/>
                                                 </Button>
 
@@ -226,6 +171,11 @@
 
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
                 </ItemsControl>
                 <!--<Button Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
   ToolTip="MaterialDesignFloatingActionMiniDarkButton"
@@ -245,88 +195,52 @@
 
 
 
-        <StackPanel Grid.Row="2"/>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10">
+            <StackPanel Visibility="Visible" Orientation="Horizontal" HorizontalAlignment="Center">
+                <materialDesign:PopupBox Name="PopUpBox" PlacementMode="TopAndAlignCentres" StaysOpen="True" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                    <materialDesign:PopupBox.ToggleContent>
+                        <Grid>
+                            <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Panel.ZIndex="1" Kind="Add" Height="30" Width="30" Foreground="White" Background="Transparent"/>
+                            <Button IsEnabled="True" Panel.ZIndex="0" Style="{DynamicResource MaterialDesignFloatingActionButton}" ToolTip="Create Group" Height="30" Width="30">
+                            </Button>
+                        </Grid>
+                    </materialDesign:PopupBox.ToggleContent>
+                    <Grid Width="300" Height="300">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0" Margin="8,8,8,16" Text="New Group" FontSize="20" FontWeight="DemiBold" />
+                        <TextBox Name="GroupCreationNameTextBox" MaxLength="25" TextChanged="NewGroupNameChanged" Height="50px" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="1" materialDesign:HintAssist.Hint="Name" Style="{DynamicResource MaterialDesignOutlinedTextBox}" Margin="20 10 20 10">
+                            <TextBox.Text>
+                                <Binding 
+                                    Path="CreationGroupName"
+                                    UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <validationRules:MandatoryField ValidatesOnTargetUpdated="True"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <ComboBox Name="ComboboxCreationType" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" FontSize="16" Style="{DynamicResource MaterialDesignOutlinedComboBox}" VerticalAlignment="Center" Margin="20 5 20 5" SelectedIndex="1">
+                            <ComboBoxItem FontSize="12" Content="Notifications"/>
+                            <ComboBoxItem FontSize="12" Content="Chat"/>
+                            <ComboBoxItem FontSize="12" Content="Test"/>
+                        </ComboBox>
+
+                        <Button Click="RegisterGroup" Name="SaveNewGroupButton" IsEnabled="false" Style="{DynamicResource MaterialDesignFlatLightBgButton}" Foreground="White" Content="Save" Grid.Row="3" Margin="20 0" />
+                        <Button Click="ClosePopUp" Style="{DynamicResource MaterialDesignFlatLightBgButton}" Content="Cancel" Grid.Row="3" Margin="20 0" Grid.Column="1" Background="LightGray" BorderBrush="Transparent"/>
+                    </Grid>
+                </materialDesign:PopupBox>
+            </StackPanel>
+        </StackPanel>
 
     </Grid>
 </Page>
-
-<!--<StackPanel Width="600px">
-    <materialDesign:Card Height="200" Width="Auto" UniformCornerRadius="15" Panel.ZIndex="1">
-        <Grid HorizontalAlignment="Left" Height="200" Width="Auto">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
-                <ColumnDefinition Width="390"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="20"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="20"/>
-            </Grid.RowDefinitions>
-
-            <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="6" Source="/placeholder.jpg">
-                <Image.Clip>
-                    <RectangleGeometry RadiusX="15" RadiusY="15" Rect="0,0,200,200"/>
-                </Image.Clip>
-            </Image>
-
-            <WrapPanel VerticalAlignment="Center" Grid.Row="1" Grid.Column="1">
-                <TextBlock VerticalAlignment="Center" FontSize="18" FontWeight="Bold">Name:</TextBlock>
-                <TextBlock x:Name="textName" Text="{Binding Name}" Visibility="Hidden" VerticalAlignment="Center" FontSize="20" Margin="10 0 0 0"/>
-                <TextBox x:Name="inputName" Style="{DynamicResource MaterialDesignTextBoxBase}"  MinWidth="150" MaxLength="30" FontSize="16"  Background="#e0eef0" Foreground="Black" Visibility="Visible" Margin="10 0 0 0" />
-            </WrapPanel>
-            
-            <WrapPanel VerticalAlignment="Center"  Grid.Row="2"  Grid.Column="1">
-                <TextBlock VerticalAlignment="Center" FontSize="20" FontWeight="Bold">Type:</TextBlock>
-                <TextBlock Visibility="Collapsed" Text="{Binding Type}" x:Name="textType" VerticalAlignment="Center" FontSize="20" Margin="30 0 0 0"/>
-                <ComboBox Visibility="Visible" FontSize="16" Style="{DynamicResource MaterialDesignComboBox}" VerticalAlignment="Center" Margin="30 0 0 0" SelectedIndex="1">
-                    <ComboBoxItem FontSize="12" Content="Notifications"/>
-                    <ComboBoxItem FontSize="12" Content="Chat Group"/>
-                    <ComboBoxItem FontSize="12" Content="Test"/>
-                </ComboBox>
-            </WrapPanel>
-            
-            <WrapPanel VerticalAlignment="Center" Grid.Row="3"  Grid.Column="1">
-                <TextBlock VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold">Administrators:</TextBlock>
-                <TextBlock x:Name="messagesNumText" Text="{Binding NumberOfAdmins}"  VerticalAlignment="Bottom" FontSize="20" Margin="10 0 0 0"/>
-            </WrapPanel>
-            
-            <Grid Grid.Row="4"  Grid.Column="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="70"/>
-                </Grid.ColumnDefinitions>
-                <WrapPanel Grid.Column="0" VerticalAlignment="Center" >
-                    <TextBlock VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold">Members:</TextBlock>
-                    <TextBlock x:Name="participantsNumText" Text="{Binding numberOfMembers}" VerticalAlignment="Bottom" FontSize="20" Margin="10 0 0 0"/>
-                </WrapPanel>
-                <WrapPanel FlowDirection="LeftToRight" Grid.Column="1" VerticalAlignment="Center" >
-                    <Button Background="Black"/>
-                    <Button Background="Red"/>
-                </WrapPanel>
-            </Grid>
-        </Grid>
-    </materialDesign:Card>
-    
-    <materialDesign:Card Height="Auto" UniformCornerRadius="10" Margin="20 -20" Panel.ZIndex="0">
-        <Expander Margin="0 20 0 0" HorizontalAlignment="Stretch" Background="Transparent">
-            <Expander.Header>
-                <WrapPanel HorizontalAlignment="Center">
-                    <materialDesign:PackIcon HorizontalAlignment="Center" VerticalAlignment="Center" Width="20" Height="20" Kind="AccountArrowDownOutline"></materialDesign:PackIcon>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Group members</TextBlock>
-                </WrapPanel>
-            </Expander.Header>
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="24,8,24,16">
-                <ListView  ItemsSource="{Binding RegularUsers}" Width="Auto" HorizontalContentAlignment="Stretch">
-                    <ListView.ItemTemplate >
-                        <DataTemplate DataType="{x:Type ListView}">
-                            <TextBlock Text="{Binding Mail}"/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackPanel>
-        </Expander>
-    </materialDesign:Card>
-</StackPanel>-->

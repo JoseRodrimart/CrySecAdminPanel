@@ -62,5 +62,17 @@ namespace CrySecAdminPanel.ViewModel
         {
             groupService.AddMemberToGroup(id, idUser);
         }
+
+        internal void CreateNewGroup(string name, string type)
+        {
+            groupService.CreateNewGroup(name, type);
+            SetGroups();
+        }
+
+        internal void DeleteGroupById(int id)
+        {
+            groupService.DeleteGroupById(id);
+            SetGroups();
+        }
     }
 }
