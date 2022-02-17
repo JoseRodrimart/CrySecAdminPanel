@@ -23,5 +23,6 @@ namespace CrySecAdminPanel.Repositories
         Task CreateNewGroup([AliasAs("idCompany")] int idCompany, [AliasAs("name")] string name, [AliasAs("type")] string type);
         [Delete("/group/{id}")]
         Task DeleteGroupByID([AliasAs("id")] int id);
+
     }
 }
