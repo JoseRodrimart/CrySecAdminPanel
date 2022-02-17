@@ -29,13 +29,8 @@ namespace CrySecAdminPanel.ViewModel
         {
             CryGroups.Clear();
             List<CryGroup> groups = groupService.GetGroups();
-            Trace.WriteLine("Grupos");
-            groups.ForEach(u => Trace.WriteLine(u.ToString()));
-            Trace.WriteLine("Administradores");
-            groups.ForEach(g => g.adminUsers.ForEach(admin => Trace.WriteLine(admin.ToString())));
-            Trace.WriteLine("Usuarios");
-            groups.ForEach(g => g.regularUsers.ForEach(regular => Trace.WriteLine(regular.ToString())));
-            groups.ForEach(CryGroups.Add);  
+            groups.ForEach(CryGroups.Add);
+            CryGroups.ResetBindings();
         }
         public void UpdateGroup(CryGroup group)
         {
@@ -47,5 +42,25 @@ namespace CrySecAdminPanel.ViewModel
             return userService.usersNotIncluded(group.id);
         }
 
+        internal void ShrinkGroups(int id)
+        {
+            foreach(var group in CryGroups)
+            {
+                if(group.id != id)
+                {
+                    group.IsExpanded = false;
+                }
+            }
+            CryGroups.ResetBindings();
+        }
+        public void DeleteMemberGroup(int id, int idUser)
+        {
+            groupService.DeleteMemberGroup(id, idUser);
+            CryGroups.ResetBindings();
+        }
+        public void AddMemberToGroup(int id, int idUser)
+        {
+            groupService.AddMemberToGroup(id, idUser);
+        }
     }
 }

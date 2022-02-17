@@ -9,7 +9,8 @@ namespace PanelAdmin.Entities
         public String Name { get; set; }
         public String Type { get; set; }
         public String Image { get; set; }
-        
+
+        public Boolean IsExpanded { get; set; } = false;
         public List<CryUser> regularUsers { get; set; }
         
         public List<CryUser> adminUsers { get; set; }

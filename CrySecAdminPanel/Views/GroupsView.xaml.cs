@@ -23,7 +23,8 @@ namespace CrySecAdminPanel.Views
     /// </summary>
     public partial class GroupsView : Page
     {
-          List<CryUser> notMembers { get; set; }
+
+        CryGroup currentGroup { get; set; }
         public GroupsView()
         {
             InitializeComponent();
@@ -138,11 +139,57 @@ namespace CrySecAdminPanel.Views
 
             ListView members = panel.FindName("usersList") as ListView;
             ListView notMembersList = panel.FindName("notMembersList") as ListView;
+            Button add = panel.FindName("AddButton") as Button;
+            Button cancel = panel.FindName("CancelButton") as Button;
             
             notMembersList.ItemsSource = groupViewModel.NotMembersGroup(group);
             
             members.Visibility = Visibility.Collapsed;  
+            add.Visibility = Visibility.Collapsed;
             notMembersList.Visibility = Visibility.Visible;
+            cancel.Visibility = Visibility.Visible;
+        }
+
+        private void RemoveUserFromGroup(object sender, RoutedEventArgs e)
+        {
+            var groupViewModel = ((CryGroupViewModel)this.DataContext);
+            var user = (sender as Button).DataContext as CryUser;
+            groupViewModel.DeleteMemberGroup(currentGroup.id, user.Id);
+            groupViewModel.SetGroups();
+        }
+
+        private void ExpandingGroup(object sender, RoutedEventArgs e)
+        {
+
+            var groupViewModel = ((CryGroupViewModel)this.DataContext);
+            var CryGroup = (sender as Expander).DataContext as CryGroup;
+            currentGroup = CryGroup;
+            groupViewModel.ShrinkGroups(CryGroup.id);
+        }
+
+        private void ShowMembers(object sender, RoutedEventArgs e)
+        {
+            StackPanel panel = (sender as Button).Parent as StackPanel;
+
+            ListView members = panel.FindName("usersList") as ListView;
+            ListView notMembersList = panel.FindName("notMembersList") as ListView;
+            Button add = panel.FindName("AddButton") as Button;
+            Button cancel = panel.FindName("CancelButton") as Button;
+
+
+            members.Visibility = Visibility.Visible;
+            add.Visibility = Visibility.Visible;
+            notMembersList.Visibility = Visibility.Collapsed;
+            cancel.Visibility = Visibility.Collapsed;
+
+        }
+
+        private void AddUserToGroup(object sender, RoutedEventArgs e)
+        {
+            var groupViewModel = ((CryGroupViewModel)this.DataContext);
+            var user = (sender as Button).DataContext as CryUser;
+            groupViewModel.AddMemberToGroup(currentGroup.id, user.Id);
+            groupViewModel.SetGroups();
         }
     }
 }

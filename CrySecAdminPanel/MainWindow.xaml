@@ -1,4 +1,4 @@
-﻿<Window x:Name="MainWIndow" x:Class="CrySecAdminPanel.MainWindow"
+﻿<Window x:Name="mainWindow" x:Class="CrySecAdminPanel.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -17,7 +17,7 @@
         
         Title="MainWindow" Height="600" Width="1024" MinWidth="1000" MinHeight="618"
         
-        WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"

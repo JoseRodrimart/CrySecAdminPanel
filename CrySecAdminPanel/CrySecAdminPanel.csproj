@@ -15,6 +15,7 @@
     <None Remove="boton-de-inicio.png" />
     <None Remove="Entities\NewFile1.txt" />
     <None Remove="placeholder.jpg" />
+    <None Remove="Resources\Images\logo.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +29,7 @@
 
   <ItemGroup>
     <Resource Include="boton-de-inicio.png" />
+    <Resource Include="Resources\Images\logo.png" />
     <Resource Include="Resources\Images\placeholder.jpg" />
   </ItemGroup>
 

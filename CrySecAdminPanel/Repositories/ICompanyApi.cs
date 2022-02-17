@@ -15,5 +15,8 @@ namespace CrySecAdminPanel.Repositories
 
         [Put("/company")]
         Task<Company> UpdateCompany(Company company);
+    
+        [Get("/login/{mail}/{password}")]
+        Task<int> Login([AliasAs("mail")] string mail, [AliasAs("password")] string password);
     }
 }

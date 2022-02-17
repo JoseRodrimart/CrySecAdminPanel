@@ -26,5 +26,14 @@ namespace CrySecAdminPanel.Services
         {
             groupApi.UpdateGroup(group);
         }
+        public void DeleteMemberGroup(int groupId, int userId)
+        {
+            groupApi.DeleteUserFromGroup(groupId, userId);
+        }
+
+        public void AddMemberToGroup(int id, int idUser)
+        {
+            groupApi.AddMemberToGroup(id, idUser);
+        }
     }
 }
