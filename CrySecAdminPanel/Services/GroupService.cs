@@ -6,12 +6,13 @@ using System.Collections.Generic;
 
 namespace CrySecAdminPanel.Services
 {
+    // Clase servicio de la entidad CryGroup con una instancia del repositorio.
     internal class GroupService
     {
         IGroupApi groupApi;
         public GroupService()
         {
-            groupApi = RestService.For<IGroupApi>("http://localhost:8080");
+            groupApi = RestService.For<IGroupApi>("https://admin-panel-server.herokuapp.com");
         }
 
         public List<CryGroup> GetGroups()

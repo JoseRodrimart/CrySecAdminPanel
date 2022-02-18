@@ -21,7 +21,7 @@ namespace CrySecAdminPanel.Services
         IUsersApi usersApi; 
         public UserService()
         {
-            usersApi = RestService.For<IUsersApi>("http://localhost:8080");
+            usersApi = RestService.For<IUsersApi>("https://admin-panel-server.herokuapp.com");
         }
 
         public List<CryUser> GetUsersByCompanyId()

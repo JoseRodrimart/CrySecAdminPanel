@@ -10,12 +10,13 @@ using System.Threading.Tasks;
 
 namespace CrySecAdminPanel.Services
 {
+    // Clase servicio 
     internal class CompanyService
     {
         ICompanyApi CompanyApi;
         public CompanyService()
         {
-            CompanyApi = RestService.For<ICompanyApi>("http://localhost:8080");
+            CompanyApi = RestService.For<ICompanyApi>("https://admin-panel-server.herokuapp.com");
         }
         public Boolean Login(string mail, string password)  
         {

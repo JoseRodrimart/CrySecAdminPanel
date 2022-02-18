@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace CrySecAdminPanel.ViewModel
 {
+    // ViewModel encargardo de enlazar la vista grupos con la entidad CryGroup. 
     public partial class CryGroupViewModel
     {
         private GroupService groupService = new GroupService();

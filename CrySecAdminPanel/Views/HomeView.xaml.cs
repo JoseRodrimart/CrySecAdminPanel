@@ -1,4 +1,5 @@
-﻿using LiveChartsCore;
+﻿using CrySecAdminPanel.ViewModel;
+using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
 using SkiaSharp;
@@ -24,24 +25,16 @@ namespace CrySecAdminPanel.Views
     /// </summary>
     public partial class HomeView : Page
     {
-        public ISeries[] Series { get; set; }
-           = {
-            new LineSeries<double>
-            {
-                Name = "Serie",
-                Values = new double[] { 2, 1, 3, 5, 3, 4, 6 },
-                Fill =  null,
-                LineSmoothness = 1,
-            }
-        };
+       
 
         public String FrameContentHeight = "100";
 
         public HomeView()
         {
             InitializeComponent();
-            Chart.Series = Series;
-            Chart.LegendPosition = LiveChartsCore.Measure.LegendPosition.Top; 
+            CompanyViewModel cvm = new CompanyViewModel();
+            this.DataContext = cvm;
+
         }
     }
 }

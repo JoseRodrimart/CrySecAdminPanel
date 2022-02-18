@@ -37,7 +37,7 @@
                 <ItemsControl Name="lista" ItemsSource="{Binding CryGroups}" Width="Auto">
                     <ItemsControl.ItemTemplate >
                         <DataTemplate>
-                            <StackPanel Width="600px"  Height="Auto" Margin="20">
+                            <StackPanel Width="500px"  Height="Auto" Margin="20">
                                 <materialDesign:Card Height="200" Width="Auto" UniformCornerRadius="15" Panel.ZIndex="1">
                                     <Grid HorizontalAlignment="Left" Height="200" Width="Auto">
                                         <Grid.ColumnDefinitions>
@@ -45,27 +45,32 @@
                                             <ColumnDefinition Width="390"/>
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="20"/>
-                                            <RowDefinition Height="*"/>
-                                            <RowDefinition Height="*"/>
-                                            <RowDefinition Height="*"/>
-                                            <RowDefinition Height="*"/>
                                             <RowDefinition Height="5"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="20"/>
                                         </Grid.RowDefinitions>
 
-                                        <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="6" Source="/placeholder.jpg">
+                                        <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="6" Source="{Binding BitmapImage}">
                                             <Image.Clip>
                                                 <RectangleGeometry RadiusX="15" RadiusY="15" Rect="0,0,200,200"/>
                                             </Image.Clip>
                                         </Image>
+                                        <!--<Ellipse Grid.Column="0" Height="100" Width="100">
+                                            <Ellipse.Fill>
+                                                <ImageBrush ImageSource="{Binding BitmapImage}" />
+                                            </Ellipse.Fill>
+                                        </Ellipse>-->
 
-                                        <WrapPanel Name="TextPanel" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1">
+                                        <WrapPanel Margin="20 0 0 0" Name="TextPanel" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1">
                                             <TextBlock VerticalAlignment="Center" FontSize="18" FontWeight="Bold">Name:</TextBlock>
                                             <TextBlock x:Name="textName" Text="{Binding Name}" Visibility="Visible" VerticalAlignment="Center" FontSize="20" Margin="10 0 0 0"/>
                                             <TextBox x:Name="inputName" Style="{DynamicResource MaterialDesignTextBoxBase}" Visibility="Collapsed" MinWidth="180" MaxLength="30" FontSize="16"  Background="#e0eef0" Foreground="Black" Margin="10 0 0 0" />
                                         </WrapPanel>
 
-                                        <WrapPanel Name="TypePanel" VerticalAlignment="Center"  Grid.Row="2"  Grid.Column="1">
+                                        <WrapPanel Margin="20 0 0 0" Name="TypePanel" VerticalAlignment="Center"  Grid.Row="3"  Grid.Column="1">
                                             <TextBlock VerticalAlignment="Center" FontSize="20" FontWeight="Bold">Type:</TextBlock>
                                             <TextBlock Visibility="Visible" Text="{Binding Type}" x:Name="textType" VerticalAlignment="Center" FontSize="20" Margin="30 0 0 0"/>
                                             <ComboBox Name="ComboBoxType" Visibility="Collapsed" FontSize="16" Style="{DynamicResource MaterialDesignComboBox}" VerticalAlignment="Center"  Background="#e0eef0" Margin="30 0 0 0" SelectedIndex="1">
@@ -75,18 +80,18 @@
                                             </ComboBox>
                                         </WrapPanel>
 
-                                        <WrapPanel VerticalAlignment="Center" Grid.Row="3"  Grid.Column="1">
+                                        <WrapPanel  Margin="20 0 0 0" VerticalAlignment="Center" Grid.Row="4"  Grid.Column="1">
                                             <TextBlock VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold">Administrators:</TextBlock>
                                             <TextBlock x:Name="messagesNumText" Text="{Binding NumberOfAdmins}"  VerticalAlignment="Bottom" FontSize="20" Margin="10 0 0 0"/>
                                         </WrapPanel>
 
-                                        <Grid Grid.Row="4"  Grid.Column="1">
+                                        <Grid  Margin="20 0 0 0" Grid.Row="1"  Grid.Column="1">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="190"/>
                                                 <ColumnDefinition Width="80"/>
                                             </Grid.ColumnDefinitions>
                                             <WrapPanel Grid.Column="0" VerticalAlignment="Center" >
-                                                <TextBlock VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold">Members:</TextBlock>
+                                                <TextBlock VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold"></TextBlock>
                                                 <TextBlock x:Name="participantsNumText" Text="{Binding numberOfMembers}" VerticalAlignment="Bottom" FontSize="20" Margin="10 0 0 0"/>
                                             </WrapPanel>
                                             <WrapPanel FlowDirection="LeftToRight" Grid.Column="1" VerticalAlignment="Center" >

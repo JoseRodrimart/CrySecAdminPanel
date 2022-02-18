@@ -29,7 +29,10 @@ namespace CrySecAdminPanel
             InitializeComponent();
             CompanyViewModel cvm = new CompanyViewModel();
             this.DataContext = cvm;
-            MainFrame.Content = new HomeView();
+            MainFrame.Content = new MembersView();
+            ButtonUsers.Background = Brushes.LightBlue;
+
+
         }
 
         //Despliegue del menú lateral
@@ -46,12 +49,50 @@ namespace CrySecAdminPanel
         }
 
         //Carga de las vistas correspondientes a cada sección
-        private void LoadHomeView(object sender, RoutedEventArgs e) => MainFrame.Content = new HomeView();
-        private void LoadMembersView(object sender, RoutedEventArgs e) => MainFrame.Content = new MembersView();
-        private void LoadMessagesView(object sender, RoutedEventArgs e) =>  MainFrame.Content = new MessagesView();
-        private void LoadGroupsView(object sender, RoutedEventArgs e) => MainFrame.Content = new GroupsView();
-        private void LoadUsageView(object sender, RoutedEventArgs e) => MainFrame.Content = new UsageView();
-        private void LoadPropertiesView(object sender, RoutedEventArgs e) => MainFrame.Content = new PropertiesView();
+        private void LoadHomeView(object sender, RoutedEventArgs e){
+            ClearSelectedOption();
+            (sender as Button).Background = Brushes.LightBlue;
+            MainFrame.Content = new HomeView();
+
+        }
+
+        private void ClearSelectedOption()
+        {
+            ButtonHome.Background = Brushes.Transparent;
+            ButtonUsers.Background = Brushes.Transparent;
+            ButtonMessages.Background = Brushes.Transparent;
+            ButtonGroups.Background = Brushes.Transparent;
+            ButtonUsage.Background = Brushes.Transparent;
+            ButtonProperties.Background = Brushes.Transparent;
+        }
+
+        private void LoadMembersView(object sender, RoutedEventArgs e)
+        {
+            ClearSelectedOption();
+            (sender as Button).Background = Brushes.LightBlue;
+            MainFrame.Content = new MembersView();
+        }
+        private void LoadMessagesView(object sender, RoutedEventArgs e)
+        {
+            ClearSelectedOption();
+            (sender as Button).Background = Brushes.LightBlue;
+            MainFrame.Content = new MessagesView();
+        }
+        private void LoadGroupsView(object sender, RoutedEventArgs e)
+        {
+            ClearSelectedOption();
+            (sender as Button).Background = Brushes.LightBlue;
+            MainFrame.Content = new GroupsView();
+        }
+        private void LoadUsageView(object sender, RoutedEventArgs e) {
+            ClearSelectedOption();
+            (sender as Button).Background = Brushes.LightBlue;
+            MainFrame.Content = new UsageView(); }
+        private void LoadPropertiesView(object sender, RoutedEventArgs e) {
+            ClearSelectedOption();
+            (sender as Button).Background = Brushes.LightBlue;
+            MainFrame.Content = new PropertiesView(); 
+        }
 
         //Botones ventana
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -83,5 +124,14 @@ namespace CrySecAdminPanel
             win.DragMove();
         }
 
+        private void changedSelection(object sender, SelectionChangedEventArgs e)
+        {
+            switch(((sender as ListView).SelectedItem as Button).Name)
+            {
+                case "UserViewList": MainFrame.Content = new MembersView(); break;
+                case "GroupsViewList": MainFrame.Content = new GroupsView(); break;
+                default: break;
+            }
+        }
     }
 }

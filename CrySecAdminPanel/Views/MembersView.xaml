@@ -23,7 +23,7 @@
             <TextBlock FontSize="35" Grid.Row="0" Text="Members"></TextBlock>
         </WrapPanel>
 
-        <ScrollViewer  x:Name="TS" Grid.Row="1" CanContentScroll="True" PreviewMouseWheel="TS_PreviewMouseWheel">
+        <ScrollViewer  x:Name="TS" Grid.Row="1"  >
             <StackPanel Margin="30 0" Orientation="Vertical">
 
                 <uc:Title Text="Members list"></uc:Title>

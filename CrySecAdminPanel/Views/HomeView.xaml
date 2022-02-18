@@ -14,50 +14,23 @@
       
       >
 
-    <Grid Visibility="Hidden" VerticalAlignment="Stretch">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="20"/>
-        </Grid.RowDefinitions>
+    <Grid Visibility="Visible" VerticalAlignment="Stretch">
+   
+        <StackPanel Margin="30" Orientation="Vertical">
 
-        <WrapPanel Grid.Row="0" HorizontalAlignment="Center" Width="192">
-            <materialDesign:PackIcon Margin="17 0" VerticalAlignment="Center" Width="25" Height="25" Kind="Home"/>
-            <TextBlock FontSize="35" Grid.Row="0" Text="Home"></TextBlock>
-        </WrapPanel>
+            <uc:Title Text="Global Information"></uc:Title>
 
-        <ScrollViewer Grid.Row="1">
-            <StackPanel Margin="30 0" Orientation="Vertical">
-
-                <uc:Title Text="Global Information"></uc:Title>
-
-             
-
-                <WrapPanel   Width="Auto" HorizontalAlignment="Center">
-                    <materialDesign:Card Width="200px" Height="130px" Margin="15px">
-
-                    </materialDesign:Card>
-
-                    <materialDesign:Card Width="200px" Height="130px" Margin="15px">
-                    </materialDesign:Card>
-
-                    <materialDesign:Card Width="200px" Height="130px" Margin="15px">
-                    </materialDesign:Card>
-                </WrapPanel>
-
-                <uc:Title Text="Daily usage statistics"></uc:Title>
-
-                <materialDesign:Card Width="Auto" Height="300px" Margin="25px">
-                    <lvc:CartesianChart 
-                            x:Name="Chart"
-                            Foreground="Red"/>
+            <StackPanel Margin="0 50 0 0">
+                <materialDesign:Card x:Name="ellipseImgCompany" UniformCornerRadius="125" Width="250">
+                    <Ellipse Grid.Row="1" Stretch="UniformToFill">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="{Binding Company.BitmapImage}"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
                 </materialDesign:Card>
+                <Label Height="80" x:Name="lblCompanyName" FontSize="32" Content="{Binding Path=Company.Name}" VerticalContentAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="2"/>
             </StackPanel>
-        </ScrollViewer>
 
-
-
-        <StackPanel Grid.Row="2"/>
-
+        </StackPanel>
     </Grid>
 </Page>
