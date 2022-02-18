@@ -17,7 +17,7 @@ namespace CrySecAdminPanel.Services
         {
             CompanyApi = RestService.For<ICompanyApi>("http://localhost:8080");
         }
-        public Boolean Login(string mail, string password)
+        public Boolean Login(string mail, string password)  
         {
             int login = CompanyApi.Login(mail, password).Result;
             if (login == 0)

@@ -6,8 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Threading;
 
 namespace CrySecAdminPanel.ViewModel
 {
@@ -46,18 +48,38 @@ namespace CrySecAdminPanel.ViewModel
 
             public override void Execute(object? parameter)
             {
-                if (loginViewModel.CheckLogin())
+                try
                 {
-                    Window mainWindow = Application.Current.MainWindow;
-                    mainWindow = new MainWindow();
-                    ((parameter as Button).FindName("root") as Window).Close();
-                    mainWindow.Show();
-                } else {
-                    Trace.WriteLine("LOGIN INCORRECTO");
-                }
-               
-                
+                    if (loginViewModel.CheckLogin())
+                    {
+                        Window mainWindow = Application.Current.MainWindow;
+                        mainWindow = new MainWindow();
+                        ((parameter as Button).FindName("root") as Window).Close();
+                        mainWindow.Show();
+                    } else {
 
+                        WindowErrorAsync(parameter);
+                        //(parameter as Button).Background = Brushes.Cyan;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error connecting with the server", "Server error", MessageBoxButton.OK, MessageBoxImage.Error);
+                   
+                }
+
+
+
+            }
+
+            private async Task WindowErrorAsync(object? parameter)
+            {
+                (((parameter as Button).Parent as Grid).Parent as Border).Background = new SolidColorBrush(Color.FromArgb(255, 255, 112, 77));
+                ;
+                await Task.Delay(500);
+                (((parameter as Button).Parent as Grid).Parent as Border).Background = Brushes.White;
+
+                (parameter as Button).Content = "Login";
             }
         }
 

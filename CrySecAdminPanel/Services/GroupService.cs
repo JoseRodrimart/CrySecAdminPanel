@@ -3,10 +3,6 @@ using PanelAdmin.Entities;
 using Refit;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CrySecAdminPanel.Services
 {
@@ -40,7 +36,6 @@ namespace CrySecAdminPanel.Services
         public void CreateNewGroup(string name, string type)
         {
 
-            Trace.WriteLine((int)App.Current.Properties["CompanyId"]);
             groupApi.CreateNewGroup((int)App.Current.Properties["CompanyId"], name, type);
         }
         public void DeleteGroupById(int id)

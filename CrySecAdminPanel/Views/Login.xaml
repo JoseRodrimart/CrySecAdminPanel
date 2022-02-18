@@ -23,7 +23,7 @@
     <Window.DataContext>
         <viewModels:LoginViewModel/>
     </Window.DataContext>
-    <Border Background="{DynamicResource MaterialDesignLightBackground}" CornerRadius="15" >
+    <Border Background="White" CornerRadius="15" >
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="70px"/>
@@ -79,7 +79,7 @@
 
             <materialDesign:PackIcon VerticalAlignment="Center" Grid.Column="0" Grid.Row="5" Width="25" Height="26" Kind="Password" Margin="45,0,0,0"/>
             <PasswordBox PasswordChanged="PasswordBox_PasswordChanged" x:Name="PasswordText" materialDesign:HintAssist.Hint="Password" Style="{DynamicResource MaterialDesignOutlinedPasswordBox}" Grid.Column="2" Grid.Row="5"/>
-            <Button Name="LoginButton" Command="{Binding LoginCom}" CommandParameter="{Binding ElementName=root, Path=(FocusManager.FocusedElement)}" Grid.Row="6" Grid.Column="2" Width="100px" Content="Login" Margin="85,24,85,24"/>
+            <Button Name="LoginButton" Command="{Binding LoginCom}" CommandParameter="{Binding ElementName=root, Path=(FocusManager.FocusedElement)}" Grid.Row="6" Grid.Column="2" Width="120px" Content="Login" Cursor="Hand"/>
         </Grid>
     </Border>
 </Window>
